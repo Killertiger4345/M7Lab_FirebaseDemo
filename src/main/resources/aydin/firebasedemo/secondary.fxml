@@ -3,14 +3,55 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aydin.firebasedemo.SecondaryController">
-    <children>
-        <Label text="Secondary View" />
-        <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" />
-    </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-</VBox>
+<HBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aydin.firebasedemo.SecondaryController">
+   <children>
+      <VBox alignment="CENTER" spacing="20.0">
+          <children>
+              <Label text="Registration" />
+            <AnchorPane>
+               <children>
+                  <Label layoutX="10.0" layoutY="10.0" text="Name:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextField fx:id="rNameTextField" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label text="Email:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                  <TextField fx:id="emailTextField" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                  <Label layoutX="10.0" layoutY="10.0" text="Phone Number: " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                  <TextField fx:id="phoneTextField" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                  <Label text="Password: " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="120.0" />
+                  <PasswordField fx:id="rPasswordTextField" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" />
+                  <Label layoutX="10.0" layoutY="10.0" text="Age: " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0" />
+                  <TextField fx:id="ageTextField" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="rResultText" alignment="CENTER" prefHeight="20.0" prefWidth="275.0" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#registerUser" text="Register" />
+          </children>
+          <padding>
+              <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
+          </padding>
+      </VBox>
+      <VBox alignment="CENTER" spacing="20.0">
+         <children>
+            <Label text="Log In" />
+            <AnchorPane>
+               <children>
+                  <Label layoutX="10.0" layoutY="10.0" text="Name:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextField fx:id="lNameTextField" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label text="Password: " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                  <PasswordField fx:id="lPasswordTextField" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="lResultText" alignment="CENTER" prefHeight="20.0" prefWidth="275.0" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#loginUser" text="Log In" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>

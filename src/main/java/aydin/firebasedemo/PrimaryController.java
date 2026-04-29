@@ -30,6 +30,9 @@ public class PrimaryController {
     private TextField nameTextField;
 
     @FXML
+    private TextField phoneTextField;
+
+    @FXML
     private TextArea outputTextArea;
 
     @FXML
@@ -70,7 +73,6 @@ public class PrimaryController {
         registerUser();
     }
 
-
     @FXML
     void writeButtonClicked(ActionEvent event) {
         addData();
@@ -80,9 +82,11 @@ public class PrimaryController {
     private void switchToSecondary() throws IOException {
         DemoApp.setRoot("secondary");
     }
+
     public boolean readFirebase()
     {
         key = false;
+        outputTextArea.clear();
 
         //asynchronously retrieve all documents
         ApiFuture<QuerySnapshot> future =  DemoApp.fstore.collection("Persons").get();
@@ -97,11 +101,13 @@ public class PrimaryController {
                 listOfUsers.clear();
                 for (QueryDocumentSnapshot document : documents)
                 {
-                    outputTextArea.setText(outputTextArea.getText()+ document.getData().get("Name")+ " , Age: "+
-                            document.getData().get("Age")+ " \n ");
+                    outputTextArea.setText(outputTextArea.getText()+ document.getData().get("Name") + " , Age: " +
+                            document.getData().get("Age") + " , Phone Number: " +
+                            document.getData().get("Phone") + " \n");
                     System.out.println(document.getId() + " => " + document.getData().get("Name"));
                     person  = new Person(String.valueOf(document.getData().get("Name")),
-                            Integer.parseInt(document.getData().get("Age").toString()));
+                            Integer.parseInt(document.getData().get("Age").toString()),
+                            document.getData().get("Phone").toString());
                     listOfUsers.add(person);
                 }
             }
@@ -150,6 +156,7 @@ public class PrimaryController {
         Map<String, Object> data = new HashMap<>();
         data.put("Name", nameTextField.getText());
         data.put("Age", Integer.parseInt(ageTextField.getText()));
+        data.put("Phone", phoneTextField.getText());
 
         //asynchronously write data
         ApiFuture<WriteResult> result = docRef.set(data);
